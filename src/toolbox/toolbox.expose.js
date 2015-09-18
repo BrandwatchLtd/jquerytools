@@ -62,15 +62,22 @@
 		if (fn) { return fn.call($.mask); }
 	}
 	
-	var mask, exposed, loaded, config, overlayIndex;		
+	var mask, exposed, loaded, config, overlayIndex,
+		closingNow = false;		
 	
 	
 	$.mask = {
 		
 		load: function(conf, els) {
 			
+			if (closingNow && mask) {
+				// this calls the fadeOut callback
+				// and sets closingNow to false
+				mask.finish();
+			}
+
 			// already loaded ?
-			if (loaded) { return this; }			
+			if (loaded) { return this; }
 			
 			// configuration
 			if (typeof conf == 'string') {
@@ -169,11 +176,13 @@
 				// onBeforeClose
 				if (call(config.onBeforeClose) === false) { return this; }
 					
+				closingNow = true;
 				mask.fadeOut(config.closeSpeed, function()  {					
 					call(config.onClose);					
 					if (exposed) {
 						exposed.css({zIndex: overlayIndex});						
-					}				
+					}
+					closingNow = false;				
 					loaded = false;
 				});				
 				
