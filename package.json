@@ -1,0 +1,22 @@
+{
+  "name": "jquerytools",
+  "version": "1.2.9-bw-npm",
+  "description": "[jQuery Tools](http://flowplayer.org/tools/) - The Missing UI library for the Web ================================",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrandwatchLtd/jquerytools.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/BrandwatchLtd/jquerytools/issues"
+  },
+  "homepage": "https://github.com/BrandwatchLtd/jquerytools#readme"
+}
